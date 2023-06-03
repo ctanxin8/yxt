@@ -4,4 +4,3 @@
 当前ldconsole.exe adb --index 0 --command "pull storage/emulated/0/爱玩coc数据统计1.txt F:\leitest"
 remote object 'storage/emulated/0/爱玩coc数据统计1.txt' does not exist
 cpu站台
-你好a
