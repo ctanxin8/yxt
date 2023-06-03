@@ -1,0 +1,5 @@
+当前运行状态：正在运行
+账号运行数目：2
+当前cpu使用率：
+当前ldconsole.exe adb --index 0 --command "pull storage/emulated/0/爱玩coc数据统计1.txt F:\leitest"
+remote object 'storage/emulated/0/爱玩coc数据统计1.txt' does not exist
