@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geolocation</title>
+  <script type="text/javascript">
+    window._AMapSecurityConfig = {
+      securityJsCode: 'df7678058a80f8a4809650f4a9c6673d'
+    };
+  </script>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=703e1135af4bcc4bd65291cbd7f50d12"></script>
+  <script>
+    function getGeolocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+        document.getElementById('geolocation').textContent = 'Geolocation is not supported.';
+      }
+    }
+
+    function showPosition(position) {
+      var longitude = position.coords.longitude;
+      var latitude = position.coords.latitude;
+
+      var map = new AMap.Map('map-container', {
+        center: [longitude, latitude],
+        zoom: 13
+      });
+
+      var marker = new AMap.Marker({
+        position: [longitude, latitude],
+        map: map
+      });
+
+      AMap.plugin('AMap.Geocoder', function() {
+        var geocoder = new AMap.Geocoder();
+        geocoder.getAddress([longitude, latitude], function(status, result) {
+          if (status === 'complete' && result.info === 'OK') {
+            var address = result.regeocode.formattedAddress;
+            document.getElementById('geolocation').textContent = address;
+          } else {
+            console.log('Error occurred while geocoding.');
+            document.getElementById('geolocation').textContent = 'Error retrieving geolocation.';
+          }
+        });
+      });
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          console.log('User denied the request for Geolocation.');
+          break;
+        case error.POSITION_UNAVAILABLE:
+          console.log('Location information is unavailable.');
+          break;
+        case error.TIMEOUT:
+          console.log('The request to get user location timed out.');
+          break;
+        case error.UNKNOWN_ERROR:
+          console.log('An unknown error occurred.');
+          break;
+      }
+      document.getElementById('geolocation').textContent = 'Error retrieving geolocation.';
+    }
+  </script>
+  <style>
+    #map-container {
+      height: 300px;
+    }
+  </style>
+      <meta charset="UTF-8">
+</head>
+<body onload="getGeolocation()">
+  <h1>您的登录位置与IP地址不符合，无法ssh连接</h1>
+  <div id="map-container"></div>
+  <p id="geolocation">Loading...</p>
+</body>
+</html>
