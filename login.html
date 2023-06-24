@@ -68,12 +68,60 @@
     #map-container {
       height: 300px;
     }
+    #map-container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    input[type="text"] {
+      width: 300px;
+      height: 30px;
+      font-size: 16px;
+      padding: 5px;
+      margin-right: 10px;
+    }
+    button {
+      width: 80px;
+      height: 40px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0062cc;
+    }
+    p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
   </style>
       <meta charset="UTF-8">
 </head>
 <body onload="getGeolocation()">
   <h1>您的登录位置与IP地址不符合，无法ssh连接</h1>
+  <h2>🚨🚨🚨🚨🚨警告:你的位置和IP已被记录,这里是后端数据管理中心，如非管理员你已经非法登录🚨🚨🚨🚨🚨</h2>
+  <p>49cb45cc32e7fcfbe2091bd93d696483dfc0ea0d7d1478b60477aa5da98e988dc504c8a3c1ccdd202209456920b6760284e40b4770c0fdd5e147c23f48c5ab4b</p>
+  <p>9e05da00497efe5eadaface749fe4ec0bc1af7ea73085b1db31e9f4768b6fd490aa0535fa944e48c84ffb6b0ed9fbd5abf6ad566138791eab73e69241e930163</p>
   <div id="map-container"></div>
+
   <p id="geolocation">Loading...</p>
+  <br>
+  <hr>
+  <h2>🚨🚨🚨🚨🚨警告:你的位置和IP已被记录,这里是后端数据管理中心，如非管理员你已经非法登录🚨🚨🚨🚨🚨</h2>
+
+<div id="map-container1">
+    <input type="text" id="input" placeholder="输入莘羽子公网IP开始连接">
+    <button onclick="convertData()">连接</button>
+    <p id="output"></p>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <script src="encrypt.js"></script>
 </body>
 </html>
+
+
